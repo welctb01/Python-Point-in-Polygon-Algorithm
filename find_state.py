@@ -3496,7 +3496,7 @@ states = {
 }
 
 
-def findstate(x, y):
+def findstate(lat, lon):
     state = "not found"
 
     for key, coords in states.iteritems():
@@ -3505,9 +3505,8 @@ def findstate(x, y):
         oddnodes = False
 
         for i in range(polysides):
-            if (coords[i][1] < y and coords[j][1] >= y) or (coords[j][1] < y and coords[i][1] >= y):
-                if (coords[i][0] + (y - coords[i][1]) / (coords[j][1] - coords[i][1]) * (
-                    coords[j][0] - coords[i][0])) < x:
+            if (coords[i][1] < lon and coords[j][1] >= lon) or (coords[j][1] < lon and coords[i][1] >= lon):
+                if (coords[i][0] + (lon - coords[i][1]) / (coords[j][1] - coords[i][1]) * (coords[j][0] - coords[i][0])) < lat:
                     oddnodes = not oddnodes
             j = i
 
